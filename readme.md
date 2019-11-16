@@ -1,0 +1,1 @@
+- This app is following along the O'Reilly book Web Development with Node & Express by Ethan Brown. See the original project at https://github.com/EthanRBrown/web-development-with-node-and-express.
