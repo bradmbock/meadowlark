@@ -1,3 +1,4 @@
+var fortune = require('./lib/fortune.js');
 var express = require('express');
 
 var app = express();
@@ -15,14 +16,12 @@ app.set('port', process.env.PORT || 3000);
 
 
 //set routes
-app.get('/', function(req,res){
+app.get('/', function(req, res){
   res.render('home');
 });
 
-app.get('/about', function(req,res){
-  var randomFortune =
-    fortunes[Math.floor(Math.random() * fortunes.length)];
-    res.render('about', { fortunes: randomFortune });
+app.get('/about', function(req, res){
+    res.render('about', { fortune: fortune.getFortune() } );
 });
 
 //404 catch-all handler
@@ -41,11 +40,3 @@ app.use(function(err, req, res, next){
 app.listen(app.get('port'), function(){
   console.log( 'Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate');
 });
-
-var fortunes = [
-  "Conquer your fears or they will conquer you.",
-  "Rivers need springs.",
-  "Do not fear what you don't know.",
-  "You will have a pleasant surprise.",
-  "Whenever possible, keep it simple.",
-];
