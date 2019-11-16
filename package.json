@@ -1,0 +1,16 @@
+{
+  "name": "meadowlark-travel",
+  "version": "1.0.0",
+  "description": "A travel website",
+  "main": "meadowlark.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brad Bock",
+  "license": "ISC"
+}
