@@ -12,8 +12,15 @@ app.set('view engine', 'handlebars');
 //set static directory
 app.use(express.static(__dirname + '/public'));
 
+//set what port the app will listen on
 app.set('port', process.env.PORT || 3000);
 
+//set up URLs to add tests
+app.use(function(req,res,next){
+  res.locals.showTests = app.get('env') !== 'production' &&
+    req.query.test == '1';
+  next();
+})
 
 //set routes
 app.get('/', function(req, res){
