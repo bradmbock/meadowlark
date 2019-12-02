@@ -29,7 +29,43 @@ app.use(function(req, res, next){
     req.query.test === '1';
   next();
 });
- -
+
+//widget for inserting weather data into any view
+function getWeatherData (){
+  return {
+    locations: [
+      {
+        name: 'Portland',
+        forecastUrl: 'http://www.wunderground.com/US/OR/Portland.html',
+        iconUrl: 'http://icons-ak.wxug.com/i/c/k/cloudy.gif',
+        weather: 'Overcast',
+        temp: '54.1 F (12.3 C)',
+      },
+      {
+        name: 'Bend',
+        forecastUrl: 'http://www.wunderground.com/US/OR/Bend.html',
+        iconUrl: 'http://icons-ak.wxug.com/i/c/k/partlycloudy.gif',
+        weather: 'Partly Cloudy',
+        temp: '55 F (12.8 C)',
+      },
+      {
+        name: 'Manzanita',
+        forecastUrl: 'http://www.wunderground.com/US/OR/Manzanita.html',
+        iconUrl: 'http://icons-ak.wxug.com/i/c/k/rain.gif',
+        weather: 'LIght Rain',
+        temp: '55 F (12.8 C)',
+      },
+    ],
+  };
+}
+
+//middleware for weather Widget
+app.use(function(req, res, next){
+  if(!res.locals.partials) res.locals.partials = {};
+  res.locals.partials.weatherContext = getWeatherData();
+  next();
+});
+
 //set routes
 app.get('/', function(req, res){
   res.render('home');
